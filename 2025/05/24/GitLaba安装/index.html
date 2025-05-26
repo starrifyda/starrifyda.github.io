@@ -20,28 +20,33 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="starrifyda笔记">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="GitLab的安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitLab安装">
+<meta property="og:url" content="http://example.com/2025/05/24/GitLaba%E5%AE%89%E8%A3%85/index.html">
 <meta property="og:site_name" content="starrifyda笔记">
+<meta property="og:description" content="GitLab的安装">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-24T13:33:25.000Z">
+<meta property="article:modified_time" content="2025-05-26T14:22:26.964Z">
 <meta property="article:author" content="starrifyda">
+<meta property="article:tag" content="使用教程">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2025/05/24/GitLaba%E5%AE%89%E8%A3%85/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>starrifyda笔记</title>
+  <title>GitLab安装 | starrifyda笔记</title>
   
 
 
@@ -149,12 +154,13 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN,en,default">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/24/GitLaba%E5%AE%89%E8%A3%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -167,10 +173,9 @@
       <meta itemprop="name" content="starrifyda笔记">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/05/24/GitLaba%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">GitLab安装</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          GitLab安装
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -190,6 +195,7 @@
               </span>
 
           
+            <div class="post-description">GitLab的安装</div>
 
         </div>
       </header>
@@ -200,240 +206,65 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>GitLab的安装</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/05/24/GitLaba%E5%AE%89%E8%A3%85/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+        <h1 id="安装GItLab"><a href="#安装GItLab" class="headerlink" title="安装GItLab"></a>安装GItLab</h1><ul>
+<li><p>安装一些依赖软件包，SSH一般是系统默认安装好的</p>
+<blockquote>
+<p>安装相关命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y curl policycoreutils-python openssh-server</span><br><span class="line">sudo systemctl enable sshd</span><br><span class="line">sudo systemctl start sshd</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>关闭防火墙，或者开放HTTP的端口</p>
+<blockquote>
+<p>&#x2F;&#x2F;刷新防火墙的规则</p>
+<p>iptables -F</p>
+</blockquote>
+</li>
+<li><p>安装邮件服务</p>
+<blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install <span class="keyword">postfix</span></span><br><span class="line">sudo systemctl enable <span class="keyword">postfix</span></span><br><span class="line">sudo systemctl start <span class="keyword">postfix</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>从官网获取安装脚本</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//输出到文件里是为了看下下载的脚本内容</span><br><span class="line">curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh &gt; rpm.sh</span><br><span class="line">chmod +x rpm.sh</span><br><span class="line">./rpm.sh</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>安装gitlab</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//使用yum安装gitlab</span><br><span class="line">yum install -y gitlab-ee</span><br><span class="line">//可以看下gitlab-ee包的内容，看到gitlab安装在/opt/gitlab目录下</span><br><span class="line">rpm -ql gitlab-ee | less</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>还可以配置gitlab监听的地址与端口号gitlab的配置文件在&#x2F;etc&#x2F;gitlab&#x2F;目录下，主要配置文件为gitlab.rb</p>
+</li>
+<li><p>运行gitlab命名，并重启</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//重新配置gitlab</span><br><span class="line">sudo gitlab-ctl reconfigure</span><br><span class="line">//重启gitlab</span><br><span class="line">gitlab-ctl restart </span><br><span class="line">// 查看gitlab-ctl命令的帮助信息</span><br><span class="line">gitlab-ctl --help</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>管理员默认用户名为root，密码为初次登陆时设置的</p>
+</li>
+</ul>
+
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" rel="tag"># 使用教程</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN,en,default">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/24/hexo%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="starrifyda">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="starrifyda笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/05/24/hexo%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">Hexo使用方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-05-24 21:33:25 / 修改时间：22:46:48" itemprop="dateCreated datePublished" datetime="2025-05-24T21:33:25+08:00">2025-05-24</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>初次使用Hexo创建博客，对此进行简单的记录，以下是博主从安装到使用的整体过程以及在使用中遇到的问题和解决方案</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/05/24/hexo%E4%BD%BF%E7%94%A8/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN,en,default">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/24/Docker%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="starrifyda">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="starrifyda笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/05/24/Docker%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">Docker使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-05-24 21:33:25" itemprop="dateCreated datePublished" datetime="2025-05-24T21:33:25+08:00">2025-05-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-05-26 22:22:34" itemprop="dateModified" datetime="2025-05-26T22:22:34+08:00">2025-05-26</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Docker的简单实用</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/05/24/Docker%E4%BD%BF%E7%94%A8/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN,en,default">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/24/wsl%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="starrifyda">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="starrifyda笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/05/24/wsl%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">WSL使用方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-05-24 21:33:25" itemprop="dateCreated datePublished" datetime="2025-05-24T21:33:25+08:00">2025-05-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-05-26 21:57:10" itemprop="dateModified" datetime="2025-05-26T21:57:10+08:00">2025-05-26</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>使用windows的wsl用于创建linux环境</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/05/24/wsl%E4%BD%BF%E7%94%A8/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
